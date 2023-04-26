@@ -1,0 +1,48 @@
+{
+  "name": "hi",
+  "uuid": "21cabe16-bb0e-4f10-9489-6790ca9dbc33",
+  "category": "",
+  "description": "",
+  "parameters": "",
+  "nodes": [
+    {
+      "id": "1",
+      "path": "/08-Workflow/",
+      "name": "PrabaWF_1",
+      "description": "This node allows user to select the list of workflows in the project to create a pipeline.",
+      "details": "\u003ch2\u003eWorkflow\u003c/h2\u003e\n\u003cbr\u003e\nThis node allows user to select the list of workflows in the project to create a pipeline.\u003cbr\u003e",
+      "examples": "",
+      "type": "workflow",
+      "nodeClass": "fire.pipelineNodes.Workflow",
+      "x": "443px",
+      "y": "108px",
+      "fields": [
+        {
+          "name": "workflowUUID",
+          "value": "a65b6914-e977-4ed6-9f9a-c56b8949351b",
+          "widget": "workflow",
+          "title": "Workflow",
+          "description": "List of Workflows",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
+          "name": "notes",
+          "value": "",
+          "widget": "textfield",
+          "title": "Notes",
+          "description": "Notes",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

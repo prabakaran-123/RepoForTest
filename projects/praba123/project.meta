@@ -1,0 +1,18 @@
+{
+  "id": 22,
+  "userId": 1,
+  "uuid": "PRABA123",
+  "name": "praba123",
+  "description": "",
+  "usersApplication": 0,
+  "gitBranch": "Fresh_test",
+  "gitRootFolder": "/projects",
+  "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+  "tag": "PRABA@123_22",
+  "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest",
+  "credentialStores": [],
+  "createdBy": "admin",
+  "dateCreated": "Mar 24, 2023 12:25:47 PM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "Apr 26, 2023 3:54:23 PM"
+}
