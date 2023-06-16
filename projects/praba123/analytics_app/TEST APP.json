@@ -1,0 +1,28 @@
+{
+  "responseId": 0,
+  "createdBy": 1,
+  "updatedBy": 0,
+  "dateLastUpdated": "Jun 16, 2023 5:03:57 PM",
+  "projectName": "praba123",
+  "appPermission": {
+    "appsView": true,
+    "appsModify": true,
+    "appsExecute": true
+  },
+  "id": 1,
+  "name": "TEST APP",
+  "status": "ACTIVE",
+  "category": "",
+  "description": "",
+  "appStages": [],
+  "executionType": "Workflow",
+  "projectId": 4,
+  "executionId": 6,
+  "jobName": "",
+  "notebookPath": "",
+  "uuid": "TEST_APP",
+  "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+  "usecase": "",
+  "condition": "",
+  "syncedWithGithub": false
+}

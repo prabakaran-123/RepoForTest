@@ -30,6 +30,18 @@
           "disableRefresh": false
         },
         {
+          "name": "sparkConf",
+          "value": "",
+          "widget": "textfield",
+          "title": "Spark Conf",
+          "description": "Add spark conf",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
           "name": "notes",
           "value": "",
           "widget": "textfield",
