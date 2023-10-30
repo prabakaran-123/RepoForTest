@@ -1,0 +1,26 @@
+{
+  "responseId": 0,
+  "createdBy": 0,
+  "updatedBy": 0,
+  "dateLastUpdated": "Oct 30, 2023 12:43:24 PM",
+  "projectName": "AA",
+  "appPermission": {
+    "appsView": true,
+    "appsModify": true,
+    "appsExecute": true
+  },
+  "id": 92,
+  "name": "AAA",
+  "status": "ACTIVE",
+  "category": "AA",
+  "description": "",
+  "appStages": [],
+  "executionType": "Workflow",
+  "projectId": 170,
+  "executionId": 559,
+  "jobName": "",
+  "notebookPath": "",
+  "uuid": "AAA",
+  "syncedWithGithub": false,
+  "isGenAiApp": false
+}

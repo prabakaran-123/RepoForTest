@@ -1,0 +1,60 @@
+{
+  "name": "Pipeline_12",
+  "uuid": "370ef77b-83bb-4ee4-9227-1f59bf7b1db3",
+  "category": "",
+  "description": "",
+  "parameters": "",
+  "nodes": [
+    {
+      "id": "1",
+      "path": "/08-Workflow/",
+      "name": "Workflow_1",
+      "description": "This node allows user to select the list of workflows in the project to create a pipeline.",
+      "details": "\u003ch2\u003eWorkflow\u003c/h2\u003e\n\u003cbr\u003e\nThis node allows user to select the list of workflows in the project to create a pipeline.\u003cbr\u003e",
+      "examples": "",
+      "type": "workflow",
+      "nodeClass": "fire.pipelineNodes.Workflow",
+      "x": "202.788px",
+      "y": "162.788px",
+      "fields": [
+        {
+          "name": "workflowUUID",
+          "value": "e5f6eb7f-8709-4cc2-bd59-7e376097ce87",
+          "widget": "workflow",
+          "title": "Workflow",
+          "description": "List of Workflows",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
+          "name": "sparkConf",
+          "value": "",
+          "widget": "textfield",
+          "title": "Spark Conf",
+          "description": "Add spark conf",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
+          "name": "notes",
+          "value": "",
+          "widget": "textfield",
+          "title": "Notes",
+          "description": "Notes",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

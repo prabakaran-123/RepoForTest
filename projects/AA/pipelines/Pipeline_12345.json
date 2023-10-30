@@ -1,0 +1,72 @@
+{
+  "name": "Pipeline_12345",
+  "uuid": "234843f5-f0db-4496-99c2-a8941e76e98a",
+  "category": "",
+  "description": "",
+  "parameters": "",
+  "nodes": [
+    {
+      "id": "1",
+      "path": "/02-Code/",
+      "name": "Bash Operator",
+      "description": "This node executes a Bash script, command or set of commands.",
+      "details": "\u003ch2\u003eBash Operator\u003c/h2\u003e\n\u003cbr\u003e\nThis node executes a Bash script, command or set of commands.\u003cbr\u003e",
+      "examples": "",
+      "type": "bashOperator",
+      "nodeClass": "fire.pipelineNodes.bashOperator",
+      "x": "420.8px",
+      "y": "254.788px",
+      "fields": [
+        {
+          "name": "Name",
+          "value": "Bash",
+          "widget": "textfield",
+          "title": "Task Name",
+          "description": "Unique name of the task in Airflow DAG",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
+          "name": "trigger_rule",
+          "value": "all_success",
+          "widget": "array",
+          "title": "Trigger Rule",
+          "description": "Trigger Rule to be used",
+          "optionsArray": [
+            "all_success",
+            "all_failed",
+            "all_done",
+            "all_skipped",
+            "one_failed",
+            "one_success",
+            "none_failed",
+            "none_failed_min_one_success",
+            "none_skipped",
+            "always"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        },
+        {
+          "name": "shellCommand",
+          "value": "echo(\"hello\")",
+          "widget": "shellcommand",
+          "title": "Shell Command",
+          "description": "Shell command to be executed",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "expandable": false,
+          "disableRefresh": false
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

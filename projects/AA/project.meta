@@ -1,0 +1,19 @@
+{
+  "id": 170,
+  "userId": 1,
+  "uuid": "AA",
+  "name": "AA",
+  "description": "AA Project",
+  "usersApplication": 0,
+  "gitBranch": "Fresh_test",
+  "gitRootFolder": "/projects",
+  "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+  "tag": "AA_170",
+  "category": "",
+  "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest",
+  "credentialStores": [],
+  "createdBy": "admin",
+  "dateCreated": "Oct 30, 2023 11:53:32 AM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "Oct 30, 2023 12:43:24 PM"
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Workflow_123",
+  "uuid": "9074a96d-e795-409e-999a-4dac0a56f12f",
+  "category": "-",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Run Python Code",
+      "description": "This node executes the given python code.",
+      "details": "",
+      "examples": "",
+      "type": "dataset",
+      "nodeClass": "fire.nodes.etl.NodeRunPythonCode",
+      "x": "331.788px",
+      "y": "175.8px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "code",
+          "value": "print(\"prabakaran\")",
+          "widget": "textarea_large",
+          "type": "python",
+          "title": "Python",
+          "description": "Python Code.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "pyspark"
+    }
+  ],
+  "edges": [],
+  "dataSetDetails": [],
+  "engine": "pyspark"
+}

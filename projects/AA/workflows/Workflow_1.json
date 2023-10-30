@@ -1,0 +1,149 @@
+{
+  "name": "Workflow_1",
+  "uuid": "e5f6eb7f-8709-4cc2-bd59-7e376097ce87",
+  "category": "-",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Create Dataset",
+      "description": "Creates a dataset with the specified number of rows and nine pre-defined columns",
+      "details": "",
+      "examples": "",
+      "type": "dataset",
+      "nodeClass": "fire.nodes.dataset.NodeDatasetCreate",
+      "x": "334.788px",
+      "y": "283.8px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "numRows",
+          "value": "100",
+          "widget": "textfield",
+          "title": "Number of Rows",
+          "description": "Number of Rows in the Output Dataset",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "2",
+      "name": "Print N Rows",
+      "description": "Prints the specified number of records in the DataFrame. It is useful for seeing intermediate output",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.util.NodePrintFirstNRows",
+      "x": "592.8px",
+      "y": "295.8px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Row Values",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "n",
+          "value": "10",
+          "widget": "textfield",
+          "title": "Num Rows to Print",
+          "description": "number of rows to be printed",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "displayDataType",
+          "value": "true",
+          "widget": "array",
+          "title": "Display Data Type",
+          "description": "If true display rows DataType",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1",
+      "target": "2",
+      "id": 1
+    }
+  ],
+  "dataSetDetails": [],
+  "engine": "scala"
+}
