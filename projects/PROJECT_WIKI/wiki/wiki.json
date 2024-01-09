@@ -1,0 +1,16 @@
+[
+  {
+    "id": 37,
+    "uuid": "c127dcfe-5cfe-4948-acc3-e6a51bec8f87",
+    "name": "WIKI_1",
+    "category": "",
+    "projectId": 740,
+    "content": "\u003cp\u003e\u003cstrong\u003eHello This Is test\u003c/strong\u003e\u003c/p\u003e",
+    "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+    "description": "",
+    "createdBy": "admin",
+    "dateCreated": "Jan 9, 2024 1:21:57 PM",
+    "updatedBy": "admin",
+    "dateLastUpdated": "Jan 9, 2024 1:22:12 PM"
+  }
+]

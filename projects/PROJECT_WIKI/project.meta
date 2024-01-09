@@ -1,0 +1,18 @@
+{
+  "id": 740,
+  "userId": 1,
+  "uuid": "PROJECT_WIKI",
+  "name": "PROJECT_WIKI",
+  "description": "",
+  "usersApplication": 0,
+  "gitBranch": "Fresh_test",
+  "gitRootFolder": "/projects",
+  "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+  "tag": "PROJECT_WIKI_740",
+  "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest",
+  "credentialStores": [],
+  "createdBy": "admin",
+  "dateCreated": "Jan 9, 2024 1:21:47 PM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "Jan 9, 2024 1:23:02 PM"
+}
