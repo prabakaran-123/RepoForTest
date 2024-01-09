@@ -1,0 +1,30 @@
+[
+  {
+    "id": 33,
+    "uuid": "748128df-533d-42bf-ae6d-61ee56210796",
+    "name": "RETAIL ABOUT",
+    "category": "",
+    "projectId": 699,
+    "content": "\u003cp\u003eHello World\u003c/p\u003e",
+    "icon": "{\"icon\":\"fa-500px\",\"type\":\"font\"}",
+    "description": "des",
+    "createdBy": "admin",
+    "dateCreated": "Jan 9, 2024 11:58:29 AM",
+    "updatedBy": "admin",
+    "dateLastUpdated": "Jan 9, 2024 11:58:50 AM"
+  },
+  {
+    "id": 34,
+    "uuid": "aa831c47-9dd2-4253-be9f-5c39abb7bb3f",
+    "name": "ABOUT_2",
+    "category": "",
+    "projectId": 699,
+    "content": "\u003cp\u003e\u003cstrong\u003eThis Is the first wiki which I am creating after that I don\u0027t have any wiki \u003c/strong\u003e\u003c/p\u003e",
+    "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+    "description": "",
+    "createdBy": "admin",
+    "dateCreated": "Jan 9, 2024 11:59:34 AM",
+    "updatedBy": "admin",
+    "dateLastUpdated": "Jan 9, 2024 12:00:19 PM"
+  }
+]
