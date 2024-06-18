@@ -1,0 +1,19 @@
+{
+  "id": 752,
+  "userId": 1,
+  "uuid": "TELCO-FAULT-SEVERITY_107",
+  "name": "Telco-Fault-Severity",
+  "description": "Telco-Fault-Severity Project",
+  "usersApplication": 0,
+  "gitBranch": "Fresh_test",
+  "gitRootFolder": "/projects",
+  "icon": "{\"type\":\"svg\",\"icon\":\"images/createApplications.svg\"}",
+  "tag": "TELCO-FAULT-SEVERITY_752",
+  "category": "TELCO",
+  "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest",
+  "credentialStores": [],
+  "createdBy": "admin",
+  "dateCreated": "Jun 18, 2024 9:56:17 PM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "Jun 18, 2024 9:56:45 PM"
+}

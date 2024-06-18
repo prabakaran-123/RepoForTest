@@ -1,0 +1,3818 @@
+{
+  "name": "01-Telstra-fault-severity-EDA",
+  "uuid": "0d45a0a9-b375-4861-b5e9-dd66612f78ec",
+  "category": "Fault Severity",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Read CSV",
+      "description": "It reads in CSV files and creates a DataFrame from it",
+      "details": "",
+      "examples": "",
+      "type": "dataset",
+      "nodeClass": "fire.nodes.dataset.NodeDatasetCSV",
+      "x": "466.556px",
+      "y": "251.556px",
+      "hint": "Refresh the schema when a new file is selected or the file content has changed",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "path",
+          "value": "data/Telco_dataset/Fault_Severity_data.csv",
+          "widget": "textfield",
+          "title": "Path",
+          "description": "Path of the file/directory",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "separator",
+          "value": ",",
+          "widget": "textfield",
+          "title": "Separator",
+          "description": "CSV Separator",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "header",
+          "value": "true",
+          "widget": "array",
+          "title": "Header",
+          "description": "Whether the file has a header row",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "dropSpecialCharacterInColumnName",
+          "value": "true",
+          "widget": "array",
+          "title": "Drop Special Character In ColumnName",
+          "description": "Whether to drop the Special Characters and Spaces in Column Name.",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "mode",
+          "value": "PERMISSIVE",
+          "widget": "array",
+          "title": "Mode",
+          "description": "Mode for dealing with corrupt records during parsing.",
+          "optionsArray": [
+            "PERMISSIVE",
+            "DROPMALFORMED",
+            "FAILFAST"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "enforceSchema",
+          "value": "true",
+          "widget": "array",
+          "title": "Enforce Schema",
+          "description": "If it is set to true, the specified or inferred schema will be forcibly applied to datasource files, and headers in CSV files will be ignored. If the option is set to false, the schema will be validated against all headers in CSV files in the case when the header option is set to true.",
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "addInputFileName",
+          "value": "false",
+          "widget": "array",
+          "title": "Whether to add Input File Name as a column in the Dataframe",
+          "description": "Add the new field:input_file_name",
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "encoding",
+          "value": "UTF-8",
+          "widget": "textfield",
+          "title": "Encoding",
+          "description": "Decodes the CSV files by the given encoding type",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "quote",
+          "value": "\"",
+          "widget": "textfield",
+          "title": "Quote",
+          "description": "Sets a single character used for escaping quoted values where the separator can be part of the value",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "escape",
+          "value": "\\",
+          "widget": "textfield",
+          "title": "Escape",
+          "description": "Sets a single character used for escaping quotes inside an already quoted value.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"id\",\"location\",\"fault_severity\",\"severity_type\",\"resource_type\",\"log_feature\",\"volume\",\"event_type\"]",
+          "widget": "schema_col_names",
+          "title": "Column Names for the CSV",
+          "description": "New Output Columns of the SQL",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColTypes",
+          "value": "[\"INTEGER\",\"STRING\",\"INTEGER\",\"STRING\",\"STRING\",\"STRING\",\"INTEGER\",\"STRING\"]",
+          "widget": "schema_col_types",
+          "title": "Column Types for the CSV",
+          "description": "Data Type of the Output Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColFormats",
+          "value": "[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]",
+          "widget": "schema_col_formats",
+          "title": "Column Formats for the CSV",
+          "description": "Format of the Output Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "2",
+      "name": "Row Filter",
+      "description": "This node creates a new DataFrame containing the rows that satisfy the given condition",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeRowFilter",
+      "x": "466.667px",
+      "y": "125.667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "conditionExpr",
+          "value": "fault_severity==1",
+          "widget": "textarea_small",
+          "title": "Conditional Expression",
+          "description": "The filtering condition. Rows not satisfying given condition will be excluded from output DataFrame. eg: usd_pledged_real > 0 and (category = 1 or category == 2) and goal > 100",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "3",
+      "name": "Row Filter",
+      "description": "This node creates a new DataFrame containing the rows that satisfy the given condition",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeRowFilter",
+      "x": "452.889px",
+      "y": "376.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "conditionExpr",
+          "value": "fault_severity==0",
+          "widget": "textarea_small",
+          "title": "Conditional Expression",
+          "description": "The filtering condition. Rows not satisfying given condition will be excluded from output DataFrame. eg: usd_pledged_real > 0 and (category = 1 or category == 2) and goal > 100",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "10",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "592.667px",
+      "y": "194.667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"resource_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"resource_type\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Resource_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "11",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "774.778px",
+      "y": "189.778px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "PIE",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "resource_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Resource_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "12",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "616.667px",
+      "y": "302.653px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"resource_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"resource_type\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Resource_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "13",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "771.667px",
+      "y": "304.667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Not a Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "PIE",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "resource_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Resource_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "14",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "622.556px",
+      "y": "72.5556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"severity_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"fault_severity\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Fault_Severity_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "15",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "762.667px",
+      "y": "70.6667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "COLUMNCHART",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "severity_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Fault_Severity_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "16",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "577.556px",
+      "y": "464.556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"severity_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"fault_severity\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Fault_Severity_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "17",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "751.667px",
+      "y": "472.667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Not a Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "COLUMNCHART",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "severity_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Fault_Severity_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "18",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "394.444px",
+      "y": "472.444px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"event_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"event_type\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Event_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "19",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "245.444px",
+      "y": "480.444px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Not a Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "COLUMNCHART",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "event_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Event_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "20",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "391.556px",
+      "y": "26.5556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"event_type\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"event_type\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Event_Type_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "21",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "257.556px",
+      "y": "31.5556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Fault Severity ",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "COLUMNCHART",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "event_type",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Event_Type_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "22",
+      "name": "Group By",
+      "description": "Group By Node",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeGroupBy",
+      "x": "343.556px",
+      "y": "245.556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Aggregation Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Aggregation Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "groupingCols",
+          "value": "[\"fault_severity\"]",
+          "widget": "variables",
+          "title": "Grouping Columns",
+          "description": "Grouping Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateCols",
+          "value": "[\"fault_severity\"]",
+          "widget": "variables_list_select",
+          "title": "Aggregate Columns",
+          "description": "Aggregate Columns",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "aggregateOperations",
+          "value": "[\"count\"]",
+          "widget": "variables_list_array",
+          "title": "Aggregate Operation",
+          "description": "Aggregate Operation",
+          "optionsArray": [
+            "sum",
+            "avg",
+            "min",
+            "max",
+            "count",
+            "count_distinct"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"Fault_Severity_Count\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Column Names",
+          "description": "Output Column Names, default value is aggregateOperation_aggregateCol.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Filter Setting",
+          "value": "",
+          "widget": "tab",
+          "title": "Filter Setting",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "whereClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Where Clause",
+          "description": "where condition before group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "havingClause",
+          "value": "",
+          "widget": "textarea_small",
+          "title": "Having Clause",
+          "description": "having condition after group by function",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "23",
+      "name": "Graph Values",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.graph.NodeGraphValues",
+      "x": "220.556px",
+      "y": "248.556px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Fault Severity Count",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "titleColor",
+          "value": "#77C27F",
+          "widget": "textcolors",
+          "title": "Title Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "description",
+          "value": "",
+          "widget": "textareafield",
+          "title": "Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "descriptionColor",
+          "value": "#808080",
+          "widget": "textcolors",
+          "title": "Description Color",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "X axis",
+          "widget": "textfield",
+          "title": "X Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "",
+          "widget": "textfield",
+          "title": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxValuesToDisplay",
+          "value": "20",
+          "widget": "textfield",
+          "title": "Max Values To Display",
+          "description": "Maximum number of values to display in result.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "graphType",
+          "value": "PIE",
+          "widget": "enum",
+          "title": "Chart Type",
+          "optionsMap": {
+            "LINECHART": "Line Chart",
+            "COLUMNCHART": "Side by Side Bar Chart",
+            "BARCHART": "Stacked Bar Chart",
+            "PIE": "Pie Chart",
+            "SCATTERCHART": "Scatter Chart",
+            "DUALLINECHART": "Dual Line Chart",
+            "AREACHART": "Area Chart"
+          },
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "chartColors",
+          "value": "#F2A993,#76D0D7,#B9ABE5,#EEC896,#DE95B0,#009cef,#86ABA1,#00AF91,#C2B8A3,#BFA2DB",
+          "widget": "colors",
+          "title": "Chart Colors",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "isStreaming",
+          "value": "false",
+          "widget": "array",
+          "title": "Is Streaming?",
+          "description": "Whether the Graph is a Streaming Graph or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "markerSize",
+          "value": "12",
+          "widget": "textfield",
+          "title": "Marker size",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xCol",
+          "value": "fault_severity",
+          "widget": "variable",
+          "title": "X Column",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xSortCol",
+          "value": "true",
+          "widget": "array",
+          "title": "Sort on X Column?",
+          "description": "Whether to Sort on X column or not",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "yCols",
+          "value": "[\"Fault_Severity_Count\"]",
+          "widget": "variables",
+          "title": "Y Columns",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ySortCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Y Sort Column",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "reNameYColumns",
+          "value": "[]",
+          "widget": "variables_selected",
+          "title": "Rename Y Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "24",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "98.8889px",
+      "y": "252.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "99.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "63.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Falut Severity Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "25",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "123.889px",
+      "y": "30.8889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "111.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "74.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Fault Severity Event Type Wise</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "26",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "844px",
+      "y": "68px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "129.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "74.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Severity type wise fault Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "27",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "848px",
+      "y": "182px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "146.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "69.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Resource Type Wise Fault Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "28",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "859.889px",
+      "y": "299.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "186.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "76.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Resource Type wise Not a Fault Severity&nbsp;Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "29",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "835.889px",
+      "y": "474.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "200.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "72.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Fault Severity Type Wise Not a Fault Severity Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "30",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "36.8889px",
+      "y": "471.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "191.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "69.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Event Type Wise Not a Fault Severity Distributions</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1",
+      "target": "2",
+      "id": 1
+    },
+    {
+      "source": "1",
+      "target": "3",
+      "id": 2
+    },
+    {
+      "source": "2",
+      "target": "10",
+      "id": 3
+    },
+    {
+      "source": "10",
+      "target": "11",
+      "id": 4
+    },
+    {
+      "source": "3",
+      "target": "12",
+      "id": 5
+    },
+    {
+      "source": "12",
+      "target": "13",
+      "id": 6
+    },
+    {
+      "source": "2",
+      "target": "14",
+      "id": 7
+    },
+    {
+      "source": "14",
+      "target": "15",
+      "id": 8
+    },
+    {
+      "source": "3",
+      "target": "16",
+      "id": 9
+    },
+    {
+      "source": "16",
+      "target": "17",
+      "id": 10
+    },
+    {
+      "source": "3",
+      "target": "18",
+      "id": 11
+    },
+    {
+      "source": "18",
+      "target": "19",
+      "id": 12
+    },
+    {
+      "source": "2",
+      "target": "20",
+      "id": 13
+    },
+    {
+      "source": "20",
+      "target": "21",
+      "id": 14
+    },
+    {
+      "source": "1",
+      "target": "22",
+      "id": 15
+    },
+    {
+      "source": "22",
+      "target": "23",
+      "id": 16
+    }
+  ],
+  "dataSetDetails": [],
+  "engine": "scala"
+}

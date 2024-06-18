@@ -1,0 +1,2308 @@
+{
+  "name": "02-Telstra-Fault-Severity-Spark-Classification-Model-Training",
+  "uuid": "f2b2be44-2f74-4ad3-80b8-ab33d499e4fe",
+  "category": "Fault Severity",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Read CSV",
+      "description": "It reads in CSV files and creates a DataFrame from it",
+      "details": "",
+      "examples": "",
+      "type": "dataset",
+      "nodeClass": "fire.nodes.dataset.NodeDatasetCSV",
+      "x": "27.7917px",
+      "y": "249.806px",
+      "hint": "Refresh the schema when a new file is selected or the file content has changed",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "path",
+          "value": "data/Telco_dataset/Fault_Severity_data.csv",
+          "widget": "textfield",
+          "title": "Path",
+          "description": "Path of the file/directory",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "separator",
+          "value": ",",
+          "widget": "textfield",
+          "title": "Separator",
+          "description": "CSV Separator",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "header",
+          "value": "true",
+          "widget": "array",
+          "title": "Header",
+          "description": "Whether the file has a header row",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "dropSpecialCharacterInColumnName",
+          "value": "true",
+          "widget": "array",
+          "title": "Drop Special Character In ColumnName",
+          "description": "Whether to drop the Special Characters and Spaces in Column Name.",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "mode",
+          "value": "PERMISSIVE",
+          "widget": "array",
+          "title": "Mode",
+          "description": "Mode for dealing with corrupt records during parsing.",
+          "optionsArray": [
+            "PERMISSIVE",
+            "DROPMALFORMED",
+            "FAILFAST"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "enforceSchema",
+          "value": "true",
+          "widget": "array",
+          "title": "Enforce Schema",
+          "description": "If it is set to true, the specified or inferred schema will be forcibly applied to datasource files, and headers in CSV files will be ignored. If the option is set to false, the schema will be validated against all headers in CSV files in the case when the header option is set to true.",
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "addInputFileName",
+          "value": "false",
+          "widget": "array",
+          "title": "Whether to add Input File Name as a column in the Dataframe",
+          "description": "Add the new field:input_file_name",
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "encoding",
+          "value": "UTF-8",
+          "widget": "textfield",
+          "title": "Encoding",
+          "description": "Decodes the CSV files by the given encoding type",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "quote",
+          "value": "\"",
+          "widget": "textfield",
+          "title": "Quote",
+          "description": "Sets a single character used for escaping quoted values where the separator can be part of the value",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "escape",
+          "value": "\\",
+          "widget": "textfield",
+          "title": "Escape",
+          "description": "Sets a single character used for escaping quotes inside an already quoted value.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColNames",
+          "value": "[\"id\",\"location\",\"fault_severity\",\"severity_type\",\"resource_type\",\"log_feature\",\"volume\",\"event_type\"]",
+          "widget": "schema_col_names",
+          "title": "Column Names for the CSV",
+          "description": "New Output Columns of the SQL",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColTypes",
+          "value": "[\"INTEGER\",\"STRING\",\"INTEGER\",\"STRING\",\"STRING\",\"STRING\",\"INTEGER\",\"STRING\"]",
+          "widget": "schema_col_types",
+          "title": "Column Types for the CSV",
+          "description": "Data Type of the Output Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColFormats",
+          "value": "[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]",
+          "widget": "schema_col_formats",
+          "title": "Column Formats for the CSV",
+          "description": "Format of the Output Columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "2",
+      "name": "Vector Assembler",
+      "description": "Merges multiple columns into a vector column",
+      "details": "",
+      "examples": "",
+      "type": "ml-transformer",
+      "nodeClass": "fire.nodes.ml.NodeVectorAssembler",
+      "x": "555.875px",
+      "y": "254.806px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "inputCols",
+          "value": "[\"volume\",\"severitytype_indexed_one_hot\",\"resourcetype_indexed_one_hot\",\"logfeature_indexed_one_hot\",\"eventtype_indexed_one_hot\"]",
+          "widget": "variables",
+          "title": "Input Columns",
+          "description": "Input column of type - all numeric, boolean and vector",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float",
+            "vectorudt"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputCol",
+          "value": "train_features",
+          "widget": "textfield",
+          "title": "Output Column",
+          "description": "Output column name",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "handleInvalid",
+          "value": "error",
+          "widget": "array",
+          "title": "HandleInvalid",
+          "description": "How to handle invalid data (NULL values). Options are 'skip' (filter out rows with invalid data), 'error' (throw an error), or 'keep' (return relevant number of NaN in the output).",
+          "optionsArray": [
+            "error",
+            "skip",
+            "keep"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "3",
+      "name": "One Hot Encoder",
+      "description": "Maps a column of label indices to a column of binary vectors, with at most a single one-value",
+      "details": "",
+      "examples": "",
+      "type": "ml-transformer",
+      "nodeClass": "fire.nodes.ml.NodeOneHotEncoder",
+      "x": "397.875px",
+      "y": "252.875px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "inputCols",
+          "value": "[\"severitytype_indexed\",\"resourcetype_indexed\",\"logfeature_indexed\",\"eventtype_indexed\"]",
+          "widget": "variables_list_select",
+          "title": "Input Columns",
+          "description": "Input columns for encoding",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputCols",
+          "value": "[\"severitytype_indexed_one_hot\",\"resourcetype_indexed_one_hot\",\"logfeature_indexed_one_hot\",\"eventtype_indexed_one_hot\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Columns",
+          "description": "Output columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "scala"
+    },
+    {
+      "id": "4",
+      "name": "String Indexer",
+      "description": "StringIndexer encodes a string column of labels to a column of label indices",
+      "details": "",
+      "examples": "",
+      "type": "ml-transformer",
+      "nodeClass": "fire.nodes.ml.NodeStringIndexer",
+      "x": "193.833px",
+      "y": "261.806px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "handleInvalid",
+          "value": "error",
+          "widget": "array",
+          "title": "Handle Invalid",
+          "description": "Invalid entries to be skipped or thrown error",
+          "optionsArray": [
+            "skip",
+            "error"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "inputCols",
+          "value": "[\"severity_type\",\"resource_type\",\"log_feature\",\"event_type\"]",
+          "widget": "variables_list_select",
+          "title": "Input Columns",
+          "description": "Input columns for encoding",
+          "datatypes": [
+            "string"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputCols",
+          "value": "[\"severitytype_indexed\",\"resourcetype_indexed\",\"logfeature_indexed\",\"eventtype_indexed\"]",
+          "widget": "variables_list_textfield",
+          "title": "Output Columns",
+          "description": "Output columns",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "stringOrderType",
+          "value": "frequencyDesc",
+          "widget": "array",
+          "title": "String Order Type",
+          "description": "Param for how to order labels of string column",
+          "optionsArray": [
+            "frequencyDesc",
+            "frequencyAsc",
+            "alphabetDesc",
+            "alphabetAsc"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "scala"
+    },
+    {
+      "id": "8",
+      "name": "Cast To Single Type",
+      "description": "This node creates a new DataFrame by casting the specified input columns to a new data type",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeCastColumnType",
+      "x": "676.833px",
+      "y": "206.806px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "inputCols",
+          "value": "[\"fault_severity\"]",
+          "widget": "variables",
+          "title": "Columns",
+          "description": "Columns to be cast to new data type",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputColType",
+          "value": "DOUBLE",
+          "widget": "array",
+          "title": "New Data Type",
+          "description": "New data type for the selected columns (INTEGER, DOUBLE, STRING, LONG, SHORT)",
+          "optionsArray": [
+            "BOOLEAN",
+            "BYTE",
+            "DATE",
+            "DECIMAL",
+            "DOUBLE",
+            "FLOAT",
+            "INTEGER",
+            "LONG",
+            "SHORT",
+            "STRING",
+            "TIMESTAMP"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "replaceExistingCols",
+          "value": "true",
+          "widget": "array",
+          "title": "Replace Existing Cols?",
+          "description": "Whether to replace existing columns or create new ones?",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "9",
+      "name": "Print N Rows",
+      "description": "Prints the specified number of records in the DataFrame. It is useful for seeing intermediate output",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.util.NodePrintFirstNRows",
+      "x": "1076.97px",
+      "y": "330.945px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Row Values",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "n",
+          "value": "10",
+          "widget": "textfield",
+          "title": "Num Rows to Print",
+          "description": "number of rows to be printed",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "displayDataType",
+          "value": "true",
+          "widget": "array",
+          "title": "Display Data Type",
+          "description": "If true display rows DataType",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "10",
+      "name": "Spark Predict",
+      "description": "Predict node takes in a DataFrame and Model and makes predictions",
+      "details": "",
+      "examples": "",
+      "type": "ml-predict",
+      "nodeClass": "fire.nodes.ml.NodePredict",
+      "x": "901.96px",
+      "y": "330.945px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "11",
+      "name": "Multiclass Classification Evaluator",
+      "description": "Evaluator for multiclass classification, which expects two input columns: score and label.",
+      "details": "",
+      "examples": "",
+      "type": "ml-evaluator",
+      "nodeClass": "fire.nodes.ml.NodeMulticlassClassificationEvaluator",
+      "x": "910.989px",
+      "y": "464.994px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "labelCol",
+          "value": "fault_severity",
+          "widget": "variable",
+          "title": "Label Column",
+          "description": "The label column for model fitting.",
+          "datatypes": [
+            "double"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "predictionCol",
+          "value": "prediction",
+          "widget": "variable",
+          "title": "Prediction Column",
+          "description": "The prediction column.",
+          "datatypes": [
+            "double"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "path",
+          "value": "",
+          "widget": "textfield",
+          "title": "Path",
+          "description": "Save Confusion Matrix to Path",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrix",
+          "value": "",
+          "widget": "tab",
+          "title": "Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "output_confusion_matrix_chart",
+          "value": "false",
+          "widget": "array",
+          "title": "Output Confusion Matrix Chart",
+          "description": "Whether to display Confusion Matrix Chart.",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "cmChartTitle",
+          "value": "Title",
+          "widget": "textfield",
+          "title": "Confusion Matrix Chart Title",
+          "description": "Title name to display in Confusion Matrix Chart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "cmChartDescription",
+          "value": "Visual Representation of Predicted vs. Actual Classes",
+          "widget": "textfield",
+          "title": "Confusion Matrix Chart Description",
+          "description": "Description to display in Confusion Matrix Chart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixTargetLegend",
+          "value": "Target",
+          "widget": "textfield",
+          "title": "Confusion Matrix Target Legend",
+          "description": "Legend name to display for Target in Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixPredictedLabelLegend",
+          "value": "PredictedLabel",
+          "widget": "textfield",
+          "title": "Confusion Matrix PredictedLabel Legend",
+          "description": "Legend name to display for Predicted Label in Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Description",
+          "value": "",
+          "widget": "tab",
+          "title": "Confusion Matrix Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixRowDescription",
+          "value": "",
+          "widget": "textarea_rich",
+          "title": "Confusion Matrix Outcome description",
+          "description": "Add the business details of the outcome of the confusion matrix rows",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "12",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "88px",
+      "y": "34px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "blue",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "397px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "105px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<ul><li>https://www.kaggle.com/competitions/telstra-recruiting-network</li><li>https://www.kaggle.com/code/divyanshtrivedi/telstra-network-disruptions/notebook</li></ul>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "13",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "156.667px",
+      "y": "163.667px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "383.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "73.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>String indexer convert categorical data into numerical data</p><p>One hot encoding used to encode categorical data</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "14",
+      "name": "Split",
+      "description": "This node splits the incoming DataFrame into 2. It takes in the fraction to use in splitting the data. For example, if the fraction is .7, it would split the data into 2 DataFrames, one containing 70% of the rows(passed from lower edge id to next node) and the other containing the remaining 30%(passed from higher edge id to next node).",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.ml.NodeSplit",
+      "x": "804.778px",
+      "y": "200.778px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "fraction1",
+          "value": ".8",
+          "widget": "textfield",
+          "title": "Fraction 1",
+          "description": "Fraction to be used for Splitting the DataFrame into two. The first DataFrame would go to the lower edge output. The other would go to the higher edge output.",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "15",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "691.889px",
+      "y": "36.8889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "287.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "89.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Split train and test dataset with 80:20 ratio and train RF Classifier to classify Fault severity </p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "16",
+      "name": "Sticky Note",
+      "description": "Allows capturing Notes on the Workflow",
+      "details": "",
+      "examples": "",
+      "type": "sticky",
+      "nodeClass": "fire.nodes.doc.NodeStickyNote",
+      "x": "734.889px",
+      "y": "468.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "bgColor",
+          "value": "gray",
+          "widget": "textfield",
+          "title": "Bg Color",
+          "description": "Background of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "width",
+          "value": "144.222222px",
+          "widget": "textfield",
+          "title": "Width",
+          "description": "Width of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "height",
+          "value": "54.222222px",
+          "widget": "textfield",
+          "title": "Height",
+          "description": "Height of note",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "comment",
+          "value": "<p>Evaluate Classifier</p>",
+          "widget": "textarea_rich",
+          "title": "Comment",
+          "description": "Comments for the Workflow",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "17",
+      "name": "Decision Tree Classifier",
+      "description": "It supports both binary and multiclass labels, as well as both continuous and categorical features.",
+      "details": "",
+      "examples": "",
+      "type": "ml-estimator",
+      "nodeClass": "fire.nodes.ml.NodeDecisionTreeClassifier",
+      "x": "941.889px",
+      "y": "143.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "featuresCol",
+          "value": "train_features",
+          "widget": "variable",
+          "title": "Features Column",
+          "description": "Features column of type vectorUDT for model fitting",
+          "datatypes": [
+            "vectorudt"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "labelCol",
+          "value": "fault_severity",
+          "widget": "variable",
+          "title": "Label Column",
+          "description": "The label column for model fitting",
+          "datatypes": [
+            "double"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "predictionCol",
+          "value": "",
+          "widget": "textfield",
+          "title": "Prediction Column",
+          "description": "The prediction column created during model scoring.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "impurity",
+          "value": "gini",
+          "widget": "array",
+          "title": "Impurity",
+          "description": "The Criterion used for information gain calculation",
+          "optionsArray": [
+            "gini",
+            "entropy"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxBins",
+          "value": "32",
+          "widget": "textfield",
+          "title": "Max Bins",
+          "description": "The maximum number of bins used for discretizing continuous features.Must be >= 2 and >= number of categories in any categorical feature.",
+          "datatypes": [
+            "integer"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxDepth",
+          "value": "5",
+          "widget": "textfield",
+          "title": "Max Depth",
+          "description": "The Maximum depth of a tree",
+          "datatypes": [
+            "integer"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "minInfoGain",
+          "value": "0.0",
+          "widget": "textfield",
+          "title": "Min Information Gain",
+          "description": "The Minimum information gain for a split to be considered at a tree node",
+          "datatypes": [
+            "double"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "minInstancesPerNode",
+          "value": "1",
+          "widget": "textfield",
+          "title": "Min Instances Per Node",
+          "description": "The Minimum number of instances each child must have after split",
+          "datatypes": [
+            "integer"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "seed",
+          "value": "",
+          "widget": "textfield",
+          "title": "Seed",
+          "description": "The random seed",
+          "datatypes": [
+            "long"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "cacheNodeIds",
+          "value": "false",
+          "widget": "array",
+          "title": "Cache Node Ids",
+          "description": "The caching nodes IDs. Can speed up training of deeper trees.",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "checkpointInterval",
+          "value": "10",
+          "widget": "textfield",
+          "title": "Checkpoint Interval",
+          "description": "The checkpoint interval. E.g. 10 means that the cache will get checkpointed every 10 iterations.Set checkpoint interval (>= 1) or disable checkpoint (-1)",
+          "datatypes": [
+            "integer"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxMemoryInMB",
+          "value": "256",
+          "widget": "textfield",
+          "title": "Max memory",
+          "description": "Maximum memory in MB allocated to histogram aggregation.",
+          "datatypes": [
+            "integer"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "minWeightFractionPerNode",
+          "value": "0.0",
+          "widget": "textfield",
+          "title": "Min Weight Fraction per Node",
+          "description": "Minimum fraction of the weighted sample count that each child must have after split.",
+          "datatypes": [
+            "double"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "weightCol",
+          "value": "",
+          "widget": "variable",
+          "title": "Weight Column",
+          "description": "Param for weight column name. If this is not set or empty, we treat all instance weights as 1.0.",
+          "datatypes": [
+            "double"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "gridSearch",
+          "value": "",
+          "widget": "tab",
+          "title": "Grid Search",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "minInfoGainGrid",
+          "value": "",
+          "widget": "textfield",
+          "title": "Min Information Gain Param Grid Search",
+          "description": "Min Information Gain Parameters for Grid Search",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxBinsGrid",
+          "value": "",
+          "widget": "textfield",
+          "title": "Max Bins Param Grid Search",
+          "description": "Max Bins Parameters for Grid Search",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "maxDepthGrid",
+          "value": "",
+          "widget": "textfield",
+          "title": "Max Depth Param Grid Search",
+          "description": "Max Depth Parameters for Grid Search",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrix",
+          "value": "",
+          "widget": "tab",
+          "title": "Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "output_confusion_matrix_chart",
+          "value": "false",
+          "widget": "array",
+          "title": "Output Confusion Matrix Chart",
+          "description": "whether to display confusion matrix chart.",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "cm_chart_title",
+          "value": "Confusion Matrix Chart",
+          "widget": "textfield",
+          "title": "Confusion Matrix Chart Title",
+          "description": "Title name to display in Confusion Matrix Chart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "cm_chart_description",
+          "value": "Visual Representation of Predicted vs. Actual Classes",
+          "widget": "textfield",
+          "title": "Confusion Matrix Chart Description",
+          "description": " Description to display in Confusion Matrix CHart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixTargetLegend",
+          "value": "Target",
+          "widget": "textfield",
+          "title": "Confusion Matrix Target Legend",
+          "description": "Legend name to display for Target in Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixPredictedLabelLegend",
+          "value": "PredictedLabel",
+          "widget": "textfield",
+          "title": "Confusion Matrix PredictedLabel Legend",
+          "description": "Legend name to display for Predicted Label in Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixCountLegend",
+          "value": "Count",
+          "widget": "textfield",
+          "title": "Confusion Matrix Count Legend",
+          "description": "Legend name to display for Count in Confusion Matrix",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "Description",
+          "value": "",
+          "widget": "tab",
+          "title": "Confusion Matrix Description",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "confusionMatrixRowDescription",
+          "value": "",
+          "widget": "textarea_rich",
+          "title": "Confusion Matrix Outcome description",
+          "description": "One can provide the business details of the outcome of the confusion matrix rows",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ROC Curve",
+          "value": "",
+          "widget": "tab",
+          "title": "ROC Curve",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "output_roc_curve",
+          "value": "false",
+          "widget": "array",
+          "title": "Output ROC Curve",
+          "description": "whether to display confusion matrix chart.",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "roc_title",
+          "value": "ROC Curve",
+          "widget": "textfield",
+          "title": "ROC Curve Chart Title",
+          "description": "Title name to display in ROC Curve Chart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "roc_description",
+          "value": "Receiver operating characteristic (ROC) curve",
+          "widget": "textfield",
+          "title": "ROC Curve Chart Description",
+          "description": "Add Description for ROC Curve Chart",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "xlabel",
+          "value": "False Positive Rate (specificity)",
+          "widget": "textfield",
+          "title": "X Label",
+          "description": "X label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "ylabel",
+          "value": "True Positive Rate (sensitivity)",
+          "widget": "textfield",
+          "title": "Y Label",
+          "description": "Y Label",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "18",
+      "name": "Select Columns",
+      "description": "This node creates a new DataFrame that contains only the selected columns",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.etl.NodeColumnFilter",
+      "x": "1120.89px",
+      "y": "430.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "outputCols",
+          "value": "[\"id\",\"location\",\"fault_severity\",\"severity_type\",\"resource_type\",\"log_feature\",\"volume\",\"event_type\",\"severitytype_indexed\",\"resourcetype_indexed\",\"logfeature_indexed\",\"eventtype_indexed\"]",
+          "widget": "variables",
+          "title": "Columns",
+          "description": "Columns to be included in the output DataFrame",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "19",
+      "name": "Save CSV",
+      "description": "Saves the DataFrame into the specified location in CSV Format",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.save.NodeSaveCSV",
+      "x": "1202.89px",
+      "y": "331.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "path",
+          "value": "data/Telco_dataset/Fault_Test_data",
+          "widget": "textfield",
+          "title": "Path",
+          "description": "Path where to save the CSV files",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "saveMode",
+          "value": "Overwrite",
+          "widget": "array",
+          "title": "Save Mode",
+          "description": "Whether to Append, Overwrite or Error if the path Exists",
+          "optionsArray": [
+            "Append",
+            "Overwrite",
+            "ErrorIfExists",
+            "Ignore"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "header",
+          "value": "true",
+          "widget": "array",
+          "title": "Header",
+          "description": "Should a Header Row be saved with each File?",
+          "optionsArray": [
+            "true",
+            "false"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "encoding",
+          "value": "UTF-8",
+          "widget": "textfield",
+          "title": "Encoding",
+          "description": "Decodes the CSV files by the given encoding type",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "quote",
+          "value": "\"",
+          "widget": "textfield",
+          "title": "Quote",
+          "description": "Sets a single character used for escaping quoted values where the separator can be part of the value",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "escape",
+          "value": "\\",
+          "widget": "textfield",
+          "title": "Escape",
+          "description": "Sets a single character used for escaping quotes inside an already quoted value.",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "advanced",
+          "value": "",
+          "widget": "tab",
+          "title": "Advanced",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "partitionColNames",
+          "value": "[]",
+          "widget": "variables",
+          "title": "Partition Column Names",
+          "description": "Partition Column Names",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "20",
+      "name": "Spark ML Model Save",
+      "description": "This node saves the ML model generated at the specified path",
+      "details": "",
+      "examples": "",
+      "type": "ml-modelsave",
+      "nodeClass": "fire.nodes.ml.NodeModelSave",
+      "x": "1092.89px",
+      "y": "111.889px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "path",
+          "value": "data/Telco_dataset/Fault_Model/",
+          "widget": "textfield",
+          "title": "Path",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "fixedPath",
+          "value": "false",
+          "widget": "array",
+          "title": "Static path",
+          "description": "Set this to true if you want model to be saved in a static path. It will overwrite the model in the directory specified.",
+          "datatypes": [
+            "boolean"
+          ],
+          "optionsArray": [
+            "false",
+            "true"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "overwrite",
+          "value": "true",
+          "widget": "boolean",
+          "title": "Overwrite Output",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "all"
+    },
+    {
+      "id": "22",
+      "name": "Correlation",
+      "description": "calculates the correlation between two series of data.",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.ml.NodeCorrelation",
+      "x": "307.778px",
+      "y": "403.778px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "title",
+          "value": "Correlation Matrix",
+          "widget": "textfield",
+          "title": "Title",
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "inputCols",
+          "value": "[\"fault_severity\",\"volume\",\"severitytype_indexed\",\"resourcetype_indexed\",\"logfeature_indexed\",\"eventtype_indexed\"]",
+          "widget": "variables",
+          "title": "Input Column for Correlation",
+          "description": "Column Names to check correlation ",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "handleInvalid",
+          "value": "skip",
+          "widget": "array",
+          "title": "Handle invalid pairs",
+          "description": "Handle invalid pairs.",
+          "datatypes": [
+            "string"
+          ],
+          "optionsArray": [
+            "skip",
+            "error",
+            "keep"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "scala"
+    },
+    {
+      "id": "23",
+      "name": "Feature Selection With Correlation",
+      "description": "",
+      "details": "",
+      "examples": "",
+      "type": "transform",
+      "nodeClass": "fire.nodes.featureselection.FeatureSelectionWithCorrelation",
+      "x": "55.7778px",
+      "y": "406.778px",
+      "fields": [
+        {
+          "name": "storageLevel",
+          "value": "DEFAULT",
+          "widget": "array",
+          "title": "Output Storage Level",
+          "description": "Storage Level of the Output Datasets of this Node",
+          "optionsArray": [
+            "DEFAULT",
+            "NONE",
+            "DISK_ONLY",
+            "DISK_ONLY_2",
+            "MEMORY_ONLY",
+            "MEMORY_ONLY_2",
+            "MEMORY_ONLY_SER",
+            "MEMORY_ONLY_SER_2",
+            "MEMORY_AND_DISK",
+            "MEMORY_AND_DISK_2",
+            "MEMORY_AND_DISK_SER",
+            "MEMORY_AND_DISK_SER_2",
+            "OFF_HEAP"
+          ],
+          "required": false,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "targetCol",
+          "value": "fault_severity",
+          "widget": "variable",
+          "title": "TargetCol",
+          "description": "",
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        },
+        {
+          "name": "featureCols",
+          "value": "[\"volume\",\"severitytype_indexed\",\"resourcetype_indexed\",\"logfeature_indexed\",\"eventtype_indexed\"]",
+          "widget": "variables",
+          "title": "Feature Columns",
+          "description": "",
+          "datatypes": [
+            "integer",
+            "long",
+            "double",
+            "float"
+          ],
+          "required": true,
+          "display": true,
+          "editable": true,
+          "disableRefresh": false,
+          "expandable": false
+        }
+      ],
+      "engine": "scala"
+    }
+  ],
+  "edges": [
+    {
+      "source": "4",
+      "target": "3",
+      "id": 1
+    },
+    {
+      "source": "3",
+      "target": "2",
+      "id": 2
+    },
+    {
+      "source": "2",
+      "target": "8",
+      "id": 3
+    },
+    {
+      "source": "10",
+      "target": "9",
+      "id": 4
+    },
+    {
+      "source": "10",
+      "target": "11",
+      "id": 5
+    },
+    {
+      "source": "8",
+      "target": "14",
+      "id": 6
+    },
+    {
+      "source": "1",
+      "target": "4",
+      "id": 7
+    },
+    {
+      "source": "14",
+      "target": "17",
+      "id": 8
+    },
+    {
+      "source": "14",
+      "target": "10",
+      "id": 9
+    },
+    {
+      "source": "17",
+      "target": "10",
+      "id": 10
+    },
+    {
+      "source": "9",
+      "target": "18",
+      "id": 11
+    },
+    {
+      "source": "18",
+      "target": "19",
+      "id": 12
+    },
+    {
+      "source": "17",
+      "target": "20",
+      "id": 13
+    },
+    {
+      "source": "4",
+      "target": "22",
+      "id": 15
+    },
+    {
+      "source": "4",
+      "target": "23",
+      "id": 16
+    }
+  ],
+  "dataSetDetails": [],
+  "engine": "scala"
+}
