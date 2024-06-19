@@ -1,0 +1,18 @@
+{
+  "id": 760,
+  "userId": 1,
+  "uuid": "GIT_PROJECT",
+  "name": "GIT_PROJECT",
+  "description": "",
+  "usersApplication": 0,
+  "gitBranch": "Fresh_test",
+  "gitRootFolder": "/projects",
+  "icon": "{\"type\":\"svg\",\"icon\":\"http://localhost:8080/images/createApplications.svg\"}",
+  "tag": "GIT_PROJECT_760",
+  "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest",
+  "credentialStores": [],
+  "createdBy": "admin",
+  "dateCreated": "Jun 19, 2024 11:31:06 AM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "Jun 19, 2024 11:31:34 AM"
+}
