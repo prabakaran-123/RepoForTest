@@ -1,0 +1,9 @@
+{
+  "name": "WORKFLOW_1",
+  "uuid": "bf54db12-c8a4-4b4a-9834-f01acec347fa",
+  "category": "-",
+  "nodes": [],
+  "edges": [],
+  "dataSetDetails": [],
+  "engine": "scala"
+}
