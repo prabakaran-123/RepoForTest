@@ -1,6 +1,6 @@
 {
   "name": "WORKFLOW_2",
-  "uuid": "700e8c21-777a-494a-9877-c937cc8447e2",
+  "uuid": "23d8c295-7d03-429c-9138-8a0a1a5ae3da",
   "category": "-",
   "nodes": [
     {
@@ -141,7 +141,7 @@
         },
         {
           "name": "llmConnection",
-          "value": "1876",
+          "value": "OpenAiConnect",
           "widget": "object_array",
           "title": "Select Connection",
           "description": "Select Connection",

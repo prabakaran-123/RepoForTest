@@ -1,7 +1,7 @@
 {
-  "id": 10078,
+  "id": 10077,
   "userId": 1,
-  "uuid": "TESTGIT_861",
+  "uuid": "TESTGIT_805",
   "name": "TestGIT",
   "description": "",
   "usersApplication": 0,
@@ -12,6 +12,7 @@
   "gitRepoUrl": "https://github.com/prabakaran-123/RepoForTest.git",
   "credentialStores": [],
   "createdBy": "admin",
-  "dateCreated": "May 21, 2025, 3:51:08 PM",
-  "dateLastUpdated": "May 21, 2025, 3:51:08 PM"
+  "dateCreated": "May 21, 2025, 3:11:06 PM",
+  "updatedBy": "admin",
+  "dateLastUpdated": "May 21, 2025, 3:17:43 PM"
 }
