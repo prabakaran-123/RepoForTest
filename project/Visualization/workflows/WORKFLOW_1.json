@@ -1,0 +1,24 @@
+{
+  "name": "WORKFLOW_1",
+  "uuid": "03cb75e4-487b-4dd8-8384-ea898746fb2c",
+  "category": "-",
+  "nodes": [
+    {
+      "id": "1",
+      "name": " Multi LLM Query",
+      "iconImage": "/images/icons/node-icon/Graph_group_by_column.svg",
+      "description": "This node is designed to query multiple large language models (LLMs) from different providers (OpenAI, Bedrock, Gemini) using a vector database (e.g., Pinecone or FAISS) or a DataFrame. It processes user queries and returns responses by querying the selected vector database.",
+      "details": "",
+      "examples": "",
+      "type": "pyspark",
+      "nodeClass": "fire.nodes.gai.NodeMultiLLMQuery",
+      "x": "285px",
+      "y": "169px",
+      "fields": [],
+      "engine": "pyspark"
+    }
+  ],
+  "edges": [],
+  "dataSetDetails": [],
+  "engine": "pyspark"
+}
